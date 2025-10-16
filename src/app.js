@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import helmet from "helmet";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import expenseRoutes from "./routes/expenseRoutes.js";
@@ -11,8 +10,6 @@ import { errorHandler, notFound } from "./middlewares/errorHandler.js";
 dotenv.config();
 
 const app = express();
-
-app.use(helmet());
 
 const corsOptions = {
   origin: process.env.FRONTEND_URL || "http://localhost:3000",
@@ -47,5 +44,6 @@ app.use("/api/budgets", budgetRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
+
 
 export default app;
