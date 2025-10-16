@@ -12,9 +12,11 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  origin: 'https://money-out.vercel.app',
   credentials: true,
   optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 app.use(cors(corsOptions));
 
@@ -47,3 +49,4 @@ app.use(errorHandler);
 
 
 export default app;
+
